@@ -177,7 +177,7 @@ button {
 }
 
 code {
-	font-family: "Courier New", Courier, monospace;
+	font-family: Consolas, Menlo, "Courier New", Courier, monospace;
 }
 
 .vscode_line {
