@@ -1031,13 +1031,13 @@ function main() {
 	rAFIdx = requestAnimationFrame(main);
 }
 
-scene.addEventListener("wheel", (e) => {
-	if (e.deltaY < 0) {
-		camera.zoom *= 1.02040816;
-	} else {
-		camera.zoom *= 0.98;
-	}
-});
+// scene.addEventListener("wheel", (e) => {
+// 	if (e.deltaY < 0) {
+// 		camera.zoom *= 1.02040816;
+// 	} else {
+// 		camera.zoom *= 0.98;
+// 	}
+// });
 
 window.addEventListener("load", () => {
 	loadMap(map0);
