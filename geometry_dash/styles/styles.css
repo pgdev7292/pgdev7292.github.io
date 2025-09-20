@@ -1,6 +1,6 @@
 :root {
-	--text-color-main: #000000;
-	--bg-color-0: #ffffff;
+	--text-color-main: #ffffff;
+	--bg-color-0: #000000;
 	--font-main: Roboto, Arial, Helvetica, sans-serif;
 }
 
@@ -8,6 +8,9 @@
 	padding: 0px;
 	margin: 0px;
 	box-sizing: border-box;
+	touch-action: none;
+	-webkit-text-size-adjust: none;
+	text-size-adjust: none;
 }
 
 body {
