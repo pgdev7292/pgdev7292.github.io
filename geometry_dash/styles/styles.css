@@ -1,0 +1,21 @@
+:root {
+	--text-color-main: #000000;
+	--bg-color-0: #ffffff;
+	--font-main: Roboto, Arial, Helvetica, sans-serif;
+}
+
+*, *:before, *:after {
+	padding: 0px;
+	margin: 0px;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: var(--font-main);
+	color: var(--text-color-main);
+	background-color: var(--bg-color-0);
+}
+
+canvas {
+	display: block;
+}
