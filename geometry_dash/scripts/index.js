@@ -1066,6 +1066,7 @@ scene.addEventListener("mousedown", (e) => {
 });
 
 scene.addEventListener("touchstart", (e) => {
+	e.preventDefault();
 	mouse.down = true;
 });
 
@@ -1074,6 +1075,7 @@ window.addEventListener("mouseup", () => {
 });
 
 window.addEventListener("touchend", (e) => {
+	e.preventDefault();
 	if (!e.touches[0]) mouse.down = false;
 });
 
