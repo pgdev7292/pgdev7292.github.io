@@ -474,6 +474,7 @@ function reset() {
 	camera.y = player.y - 1.5 * GRID_SIZE;
 	colTriggered = false;
 	displayTopGround = false;
+	bottomGroundY = floorPosition;
 }
 
 function inViewFrustum(obj) {
@@ -622,7 +623,6 @@ function update(time) {
 		}
 
 		if (player.mode === 1) {
-			const tunnelHeight = GRID_SIZE * 10;
 			if (player.y - player.height * 0.5 <= topGroundY) {
 				player.y = topGroundY + player.height * 0.5;
 				player.vy = 0;
@@ -960,7 +960,7 @@ function draw(time) {
 	}
 	ctx.restore();
 
-	ctx.lineWidth = 2;
+	ctx.lineWidth = 1.5;
 	ctx.strokeStyle = "#ffffff";
 	ctx.beginPath();
 	ctx.moveTo(cameraLeft, animBottomGroundY);
@@ -1033,13 +1033,13 @@ function main() {
 	rAFIdx = requestAnimationFrame(main);
 }
 
-scene.addEventListener("wheel", (e) => {
-	if (e.deltaY < 0) {
-		camera.zoom *= 1.02040816;
-	} else {
-		camera.zoom *= 0.98;
-	}
-});
+// scene.addEventListener("wheel", (e) => {
+// 	if (e.deltaY < 0) {
+// 		camera.zoom *= 1.02040816;
+// 	} else {
+// 		camera.zoom *= 0.98;
+// 	}
+// });
 
 window.addEventListener("load", () => {
 	loadMap(map0);
