@@ -727,6 +727,40 @@ function lerpHexColor(hex0, hex1, t) {
 	return rgbToHex(r, g, b);
 }
 
+
+// const hexToRgb = hex => {
+// 	hex = hex.replace(/^#/, "");
+// 	if (hex.length === 3) {
+// 		hex = hex.split("").map(c => c + c).join("");
+// 	}
+// 	const bigint = parseInt(hex, 16);
+// 	return [
+// 		(bigint >> 16) & 255,
+// 		(bigint >> 8) & 255,
+// 		bigint & 255
+// 	];
+// };
+
+// const rgbToHex = (r, g, b) =>
+// 	"#" +
+// 	[r, g, b]
+// 		.map(x => {
+// 			const hex = Math.round(x).toString(16);
+// 			return hex.length === 1 ? "0" + hex : hex;
+// 		})
+// 		.join("");
+
+// const [r1, g1, b1] = hexToRgb(hex1);
+// const [r2, g2, b2] = hexToRgb(hex2);
+
+// const r = r1 + (r2 - r1) * t;
+// const g = g1 + (g2 - g1) * t;
+// const b = b1 + (b2 - b1) * t;
+
+// return rgbToHex(r, g, b);
+// }
+
+
 function normalizeNumber(value, min, max) {
 	if (max === min) {
 		throw new Error("Min and max cannot be the same");
@@ -770,43 +804,43 @@ function draw(time) {
 		const t = Math.min(1, normalizeNumber(player.x, 25680, 25872));
 		bgColor = lerpHexColor("#ff00c9", "#ff0019", t);
 		groundColor = lerpHexColor("#2d0026", "#000000", t);
-	} else if (camera.x > 24624) {
+	} else if (player.x > 24624) {
 		bgColor = "#ff00c9";
 		groundColor = "#2d0026";
-	} else if (camera.x > 24464) {
-		const t = normalizeNumber(camera.x, 24464, 24624);
+	} else if (player.x > 24464) {
+		const t = normalizeNumber(player.x, 24464, 24624);
 		bgColor = lerpHexColor("#f10026", "#ff00c9", t);
 		groundColor = lerpHexColor("#8c001e", "#2d0026", t);
-	} else if (camera.x > 16496) {
+	} else if (player.x > 16496) {
 		bgColor = "#f10026";
 		groundColor = "#8c001e";
-	} else if (camera.x > 16336) {
-		const t = normalizeNumber(camera.x, 16336, 16496);
+	} else if (player.x > 16336) {
+		const t = normalizeNumber(player.x, 16336, 16496);
 		bgColor = lerpHexColor("#bc00ff", "#f10026", t);
 		groundColor = lerpHexColor("#8a07cd", "#8c001e", t);
-	} else if (camera.x > 13520) {
+	} else if (player.x > 13520) {
 		bgColor = "#bc00ff";
 		groundColor = "#8a07cd";
-	} else if (camera.x > 13360) {
-		const t = normalizeNumber(camera.x, 13360, 13520);
+	} else if (player.x > 13360) {
+		const t = normalizeNumber(player.x, 13360, 13520);
 		bgColor = lerpHexColor("#ff0a72", "#bc00ff", t);
 		groundColor = lerpHexColor("#530027", "#8a07cd", t);
-	} else if (camera.x > 8624) {
+	} else if (player.x > 8624) {
 		bgColor = "#ff0a72";
 		groundColor = "#530027";
-	} else if (camera.x > 8464) {
-		const t = normalizeNumber(camera.x, 8464, 8624);
+	} else if (player.x > 8464) {
+		const t = normalizeNumber(player.x, 8464, 8624);
 		bgColor = lerpHexColor("#000404", "#ff0a72", t);
 		groundColor = lerpHexColor("#001819", "#530027", t);
-	} else if (camera.x > 7824) {
-		const t = normalizeNumber(camera.x, 7824, 8464);
+	} else if (player.x > 7824) {
+		const t = normalizeNumber(player.x, 7824, 8464);
 		bgColor = lerpHexColor("#9e03ff", "#000404", t);
 		groundColor = lerpHexColor("#6000b9", "#001819", t);
-	} else if (camera.x > 3472) {
+	} else if (player.x > 3472) {
 		bgColor = "#9e03ff";
 		groundColor = "#6000b9";
-	} else if (camera.x > 144) {
-		const t = normalizeNumber(camera.x, 144, 3472);
+	} else if (player.x > 144) {
+		const t = normalizeNumber(player.x, 144, 3472);
 		bgColor = lerpHexColor("#283eff", "#9e03ff", t);
 		groundColor = lerpHexColor("#0013c8", "#6000b9", t)
 	} else {
