@@ -16,34 +16,10 @@
     <meta name="application-name" content="Geometry Dash">
     <link rel="stylesheet" href="styles/styles.css">
     <script src="scripts/index.js" defer></script>
-    <!-- <script src="scripts/level_editor.js" defer></script> -->
+    <script src="scripts/custom_level_import.js" defer></script>
     <title>Geometry Dash</title>
 </head>
 <body>
     <canvas id="scene"></canvas>
-    <script>
-        window.addEventListener("load", () => {
-            setTimeout(() => {
-                cancelAnimationFrame(rAFIdx);
-
-                const levelCode = prompt("Enter level code");
-
-                if (levelCode) {
-                    loadMap(levelCode.trim());
-
-                    for (let i = 0; i < level.blocks.length; i++) {
-                        const block = level.blocks[i];
-                        if (block.x + block.width > levelEnd) levelEnd = block.x + block.width;
-                    }
-
-                    levelEnd += 12 * GRID_SIZE;
-
-                    reset();
-                    prevTime = performance.now();
-                    rAFIdx = requestAnimationFrame(main);
-                }
-            }, 3000);
-        });
-    </script>
 </body>
 </html>

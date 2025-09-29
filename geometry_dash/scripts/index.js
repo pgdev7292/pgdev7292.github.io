@@ -421,6 +421,8 @@ const sectionParent = {
 	p: "portals"
 };
 
+let levelEnd = 0;
+
 function loadMap(str = "v1!") {
 	try {
 		level.blocks = [];
@@ -456,6 +458,23 @@ function loadMap(str = "v1!") {
 				});
 			}
 		}
+
+		for (let i = 0; i < level.blocks.length; i++) {
+			const block = level.blocks[i];
+			if (block.x + block.width * 0.5 > levelEnd) levelEnd = block.x + block.width * 0.5;
+		}
+
+		for (let i = 0; i < level.spikes.length; i++) {
+			const spike = level.spikes[i];
+			if (spike.x + spike.width * 0.5 > levelEnd) levelEnd = spike.x + spike.width * 0.5;
+		}
+
+		for (let i = 0; i < level.portals.length; i++) {
+			const portal = level.portals[i];
+			if (portal.x + portal.width * 0.5 > levelEnd) levelEnd = portal.x + portal.width * 0.5;
+		}
+
+		levelEnd += 12 * GRID_SIZE;
 	} catch (err) {
 		console.error(err);
 		showDevMessage(err, 2);
@@ -473,7 +492,6 @@ let animBottomGroundY = floorPosition;
 
 let colTriggered = false;
 
-let levelEnd = 0;
 
 function reset() {
 	levelMusic.currentTime = 0;
@@ -1126,26 +1144,21 @@ function main() {
 // 	}
 // });
 
-window.addEventListener("load", () => {
-	loadMap(map0);
+loadMap(map0);
 
-	for (let i = 0; i < level.blocks.length; i++) {
-		const block = level.blocks[i];
-		if (block.x + block.width > levelEnd) levelEnd = block.x + block.width;
-	}
-
-	levelEnd += 12 * GRID_SIZE;
-
+function init() {
 	prevTime = performance.now();
 	rAFIdx = requestAnimationFrame(main);
-});
+}
+
+window.addEventListener("load", init, false);
 
 // let playSound = false;
 window.addEventListener("keydown", (e) => {
 	// if (!playSound) {
-		// playSound = true;
-		// levelMusic.playbackRate = 0.5;
-		// levelMusic.play();
+	// playSound = true;
+	// levelMusic.playbackRate = 0.5;
+	// levelMusic.play();
 	// }
 
 	keysDown[e.key.toLowerCase()] = true;
