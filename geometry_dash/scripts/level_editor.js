@@ -412,11 +412,11 @@ const selectionStart = { x: 0, y: 0 };
 const selectionEnd = { x: 0, y: 0 };
 
 function update(time) {
-	const increment = 8 / camera.zoom;
-	if (keysDown["w"]) camera.y -= increment;
-	if (keysDown["a"]) camera.x -= increment;
-	if (keysDown["s"]) camera.y += increment;
-	if (keysDown["d"]) camera.x += increment;
+	const increment = 480 / camera.zoom;
+	if (keysDown["w"]) camera.y -= increment * time;
+	if (keysDown["a"]) camera.x -= increment * time;
+	if (keysDown["s"]) camera.y += increment * time;
+	if (keysDown["d"]) camera.x += increment * time;
 
 	camera.x = Math.max(camera.x, 0);
 	camera.y = Math.min(camera.y, 192);
