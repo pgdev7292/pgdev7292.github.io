@@ -425,6 +425,7 @@ function loadMap(str = "v1!") {
 	try {
 		level.blocks = [];
 		level.spikes = [];
+		level.portals = [];
 
 		const content = str.split("!");
 		const data = content[1];
