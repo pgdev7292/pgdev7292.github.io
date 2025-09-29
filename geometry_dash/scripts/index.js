@@ -799,6 +799,7 @@ function draw(time) {
 		camera.y = lerp(camera.y, activePortalY, 1 - Math.exp(-8 * time));
 	}
 
+	// Change the environment colors based on the player's x position
 	if (colTriggered || aabbCollision(player, { x: 25712, y: -400, width: GRID_SIZE, height: GRID_SIZE })) {
 		colTriggered = true;
 		const t = Math.min(1, normalizeNumber(player.x, 25680, 25872));
